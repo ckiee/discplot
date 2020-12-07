@@ -24,7 +24,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 	
 	let mut chart = ChartBuilder::on(&root)
         .caption(
-            format!("When does {} chat?", args().nth(1).unwrap()),
+            format!("When does {} chat?", args().nth(1).expect("please supply your username as an argument")),
             ("sans-serif", 48).into_font(),
         )
         .x_label_area_size(40)
