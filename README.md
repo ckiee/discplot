@@ -3,7 +3,7 @@
 
 ## usage
 - get a discord GDPR data dump 
-- build it (or download a binary)
+- build it with the rust tools (`cargo build`)
 - run this to stream all the messages into the program: `grep -hv 'ID,Timestamp' /path/to/messages/folder/*/messages.csv | /path/to/discplot/binary`
 
 ## inspiration
