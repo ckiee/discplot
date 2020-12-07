@@ -2,6 +2,7 @@ use chrono::prelude::*;
 use csv::Reader;
 use plotters::prelude::*;
 use std::io;
+use std::env::args;
 const DAY_MS: i64 = 8640; // to avoid overflow of f32
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("out.png", (640 * 2, 480 * 2)).into_drawing_area();
@@ -23,7 +24,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}..{}", min, max);
     let mut chart = ChartBuilder::on(&root)
         .caption(
-            "When does ckie chat? (w/ Rust)",
+            format!("When does {} chat?", args().nth(1).unwrap()),
             ("sans-serif", 48).into_font(),
         )
         .x_label_area_size(40)
