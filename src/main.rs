@@ -21,8 +21,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .collect::<Vec<(f32, f32)>>();
     let min = records.iter().map(|x| x.0 as i32).min().unwrap() as f32;
     let max = records.iter().map(|x| x.0 as i32).max().unwrap() as f32;
-    println!("{}..{}", min, max);
-    let mut chart = ChartBuilder::on(&root)
+	
+	let mut chart = ChartBuilder::on(&root)
         .caption(
             format!("When does {} chat?", args().nth(1).unwrap()),
             ("sans-serif", 48).into_font(),
