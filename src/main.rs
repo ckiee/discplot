@@ -3,7 +3,10 @@ use csv::Reader;
 use plotters::prelude::*;
 use std::io;
 use std::env::args;
+
 const DAY_MS: i64 = 8640; // to avoid overflow of f32
+const FONT: &'static str = "DejaVu Sans";
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let root = BitMapBackend::new("out.png", (640 * 2, 480 * 2)).into_drawing_area();
     root.fill(&WHITE)?;
@@ -25,7 +28,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 	let mut chart = ChartBuilder::on(&root)
         .caption(
             format!("When does {} chat?", args().nth(1).expect("please supply your username as an argument")),
-            ("sans-serif", 48).into_font(),
+            (FONT, 48).into_font(),
         )
         .x_label_area_size(40)
         .y_label_area_size(80)
@@ -35,8 +38,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .configure_mesh()
         .x_labels(5)
         .y_labels(5)
-        .y_label_style(("sans-serif", 24).into_font())
-        .x_label_style(("sans-serif", 24).into_font())
+        .y_label_style((FONT, 24).into_font())
+        .x_label_style((FONT, 24).into_font())
         .x_label_formatter(&|x| {
             format!(
                 "{}",
